@@ -2,15 +2,15 @@
 clock - jQuery plugin
 
 ### html code:
-```
+```html
 <div class="clock"></div>
 ```
 ### css code:
-```
+```css
 .clock { position: relative;}
 ```
 ### js code:
-```
+```javascript
 <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="js/clock-1.1.0.js"></script>
 <script>
