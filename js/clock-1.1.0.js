@@ -2,19 +2,24 @@
     var Clock = function(){
         var _ = this;
 
+        // default options 
         _.o = {
             width: 300,
             height: 450,
             theme: 't1',
-            date: new Date
+            date: new Date()
         };
 
+        // themes
         _.ts = {
             't1': ['#e0e0e0', '#46a0ff', '#fc9a13', '#fff', '#666'],
             't2': ['#adc3c0', '#576069', '#b9e3d9', '#f3f4f6', '#f74461'],
             't3': ['#dbd0a7','#123555','#d1494e','#e1eed2','#e69b03']
         };
 
+
+        // init clock
+        // element and options
         _.init = function(el, o){
 
             o && $.extend(_.o,o);
@@ -56,6 +61,7 @@
             return _;
         };
 
+        // 
         _.paintClock = function(){
             _.paintF(_.c.f.context);
             _.paintPs(_.c.p.context);
@@ -218,6 +224,7 @@
             paintArc(oa);
         };
 
+        // start clock
         _.start = function(){
             _.d += (new Date()).getTime()-_.lt.getTime();
             _.paintPs(_.c.p.context);
@@ -226,19 +233,23 @@
             },1000);
         };
 
+        // pause clock
         _.pause = function(){
             _.lt = new Date();
             _.tm = clearInterval(_.tm);
         };
 
+        // set time  Date()
         _.setTime = function(date){
             _.d = (new Date()).getTime()- date.getTime();
         };
 
+        // double bit int
         var db = function(x){
             return x<10?"0"+x:x;
         };
 
+        // paint pointer
         var paintP = function(context,angle,c){
             var o = {
                 context: context,
@@ -262,6 +273,18 @@
             paintLine(o);
         };
 
+        // paint arc 
+        /*options = {
+            context,            // canvas context
+            type,               // 'stroke' or 'fill'
+            style,              // stroke/fill style
+            x,                  // center coordinates
+            y,
+            r,                  // radius
+            sAngle,             // start angle
+            eAngle,             // end angel
+            counterclockwise    // T/F
+        }*/
         var paintArc = function(o){
             o.context.beginPath();
             o.context.arc(o.x, o.y, o.r, o.sAngle, o.eAngle, o.counterclockwise);
@@ -276,6 +299,13 @@
             o.context.closePath();
         };
 
+        // paint line or polygon
+        /*options = {
+            context,            // canvas context
+            type,               // 'stroke' or 'fill'
+            style,              // stroke/fill style
+            points,             // points coordinates points=[[x1,y1],[x2,y2]...[xn,yn]]
+        }*/
         var paintLine = function(o){
             var len = o.points.length;
             if(len<2) return ;
@@ -300,6 +330,8 @@
     $.fn.clock = function(o){
         var len = this.length;
 
+        // more than one selector
+        // chain job
         return this.each(function(index){
             var _ = $(this),
                 key = 'clock'+(len>1?'-'+ ++index:''),
