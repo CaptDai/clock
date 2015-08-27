@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>H5 & CSS3 Rush</title>
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+    <div class="wrapper clearfix show">
+        <div class="clock" id="clock"></div>
+        <div class="clock" id="clock1"></div>
+        <div class="clock" id="clock2"></div>
+    </div>
+
+</body>
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/clock-1.1.0.js"></script>
+<script>
+
+    var clock = $("#clock").clock(),
+        data = clock.data('clock');
+
+    // data.pause();
+    // data.start();
+    // data.setTime(new Date());
+
+    var d = new Date();
+    d.setHours(9);
+    d.setMinutes(51);
+    d.setSeconds(20);
+
+    var clock1 = $("#clock1").clock({
+        width: 210,
+        height: 305,
+        theme: 't2',
+        date: d
+    });
+
+    var clock2 = $("#clock2").clock({
+        width: 150,
+        height: 220,
+        theme: 't3'
+    });
+
+</script>
+</html>

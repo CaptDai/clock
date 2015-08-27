@@ -1,0 +1,35 @@
+* {
+    /*outline: 1px dashed red;*/
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+.clearfix::before,
+.clearfix::after {
+    content: " ";
+    display: table;
+}
+.clearfix::after {
+    clear: both;
+}
+.wrapper {
+    width: 100%;
+}
+.show {
+    width: 800px;
+    margin: 0 auto;
+}
+.clock {
+    position: relative;
+    float: left;
+    margin: 10px;
+    padding: 10px;
+    border: 1px dashed #dbd0a7;
+}
+.code {
+    padding: 5px 10px;
+    border: 1px solid #d8d8d8;
+    background: #d8d8d8;
+    color: #988f81;
+}
